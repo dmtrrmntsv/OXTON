@@ -1,0 +1,1251 @@
+#pragma version =0.4.6;
+#pragma allow-post-modification;
+#pragma compute-asm-ltr;
+
+;; tact_Main.headers.fc
+;;
+;; Header files for Main
+;; NOTE: declarations are sorted for optimal order
+;;
+
+;; __tact_context_get
+(int, slice, int, slice) __tact_context_get() inline;
+
+;; __tact_context_get_sender
+slice __tact_context_get_sender() inline;
+
+;; __tact_int_eq_nullable_one
+int __tact_int_eq_nullable_one(int a, int b) inline;
+
+;; __tact_dict_get_int_cell
+cell __tact_dict_get_int_cell(cell d, int kl, int k) inline;
+
+;; __tact_dict_min_int_cell
+(int, cell, int) __tact_dict_min_int_cell(cell d, int kl) inline;
+
+;; __tact_dict_next_int_cell
+(int, cell, int) __tact_dict_next_int_cell(cell d, int kl, int pivot) inline;
+
+;; __tact_dict_set_int_cell
+(cell, ()) __tact_dict_set_int_cell(cell d, int kl, int k, cell v) inline;
+
+;; $Deploy$_load_without_opcode
+(slice, ((int))) $Deploy$_load_without_opcode(slice sc_0) inline;
+
+;; $DeployOk$_store
+builder $DeployOk$_store(builder build_0, (int) v) inline;
+
+;; $DeployOk$_store_cell
+cell $DeployOk$_store_cell((int) v) inline;
+
+;; $Order$_store
+builder $Order$_store(builder build_0, (int, int, slice, int, int, int, int, int, int) v) inline;
+
+;; $Order$_store_cell
+cell $Order$_store_cell((int, int, slice, int, int, int, int, int, int) v) inline;
+
+;; $Order$_not_null
+((int, int, slice, int, int, int, int, int, int)) $Order$_not_null(tuple v) inline;
+
+;; $Order$_store_opt
+cell $Order$_store_opt(tuple v) inline;
+
+;; $Order$_load
+(slice, ((int, int, slice, int, int, int, int, int, int))) $Order$_load(slice sc_0) inline;
+
+;; $Order$_as_optional
+tuple $Order$_as_optional((int, int, slice, int, int, int, int, int, int) v) inline;
+
+;; $Order$_load_opt
+tuple $Order$_load_opt(cell cl) inline;
+
+;; $CreateOrder$_load_without_opcode
+(slice, (((int, int, slice, int, int, int, int, int, int)))) $CreateOrder$_load_without_opcode(slice sc_0) inline;
+
+;; $RemoveOrder$_load_without_opcode
+(slice, ((int))) $RemoveOrder$_load_without_opcode(slice sc_0) inline;
+
+;; $Pair$_store
+builder $Pair$_store(builder build_0, (int, int, int, int) v) inline;
+
+;; $Pair$_store_cell
+cell $Pair$_store_cell((int, int, int, int) v) inline;
+
+;; $Pair$_load
+(slice, ((int, int, int, int))) $Pair$_load(slice sc_0) inline;
+
+;; $Pair$_as_optional
+tuple $Pair$_as_optional((int, int, int, int) v) inline;
+
+;; $Pair$_load_opt
+tuple $Pair$_load_opt(cell cl) inline;
+
+;; $MatchEvent$_store
+builder $MatchEvent$_store(builder build_0, ((int, int, int, int)) v) inline;
+
+;; $MatchEvent$_store_cell
+cell $MatchEvent$_store_cell(((int, int, int, int)) v) inline;
+
+;; $Withdraw$_load_without_opcode
+(slice, ((int))) $Withdraw$_load_without_opcode(slice sc_0) inline;
+
+;; $ChangeOrderCount$_load_without_opcode
+(slice, ((int))) $ChangeOrderCount$_load_without_opcode(slice sc_0) inline;
+
+;; $CompletePair$_load_without_opcode
+(slice, ((int))) $CompletePair$_load_without_opcode(slice sc_0) inline;
+
+;; $Main$_store
+builder $Main$_store(builder build_0, (int, int, slice, cell, cell, int, int) v) inline;
+
+;; $Main$_load
+(slice, ((int, int, slice, cell, cell, int, int))) $Main$_load(slice sc_0) inline;
+
+;; $StateInit$_not_null
+((cell, cell)) $StateInit$_not_null(tuple v) inline;
+
+;; $Context$_get_value
+_ $Context$_get_value((int, slice, int, slice) v) inline;
+
+;; $Order$_to_tuple
+tuple $Order$_to_tuple(((int, int, slice, int, int, int, int, int, int)) v) inline;
+
+;; $Order$_to_opt_tuple
+tuple $Order$_to_opt_tuple(tuple v) inline;
+
+;; $Order$_to_opt_external
+tuple $Order$_to_opt_external(tuple v) inline;
+
+;; $Pair$_not_null
+((int, int, int, int)) $Pair$_not_null(tuple v) inline;
+
+;; $Pair$_to_tuple
+tuple $Pair$_to_tuple(((int, int, int, int)) v) inline;
+
+;; $Pair$_to_opt_tuple
+tuple $Pair$_to_opt_tuple(tuple v) inline;
+
+;; $Pair$_to_opt_external
+tuple $Pair$_to_opt_external(tuple v) inline;
+
+;; $Main$init$_load
+(slice, ((slice))) $Main$init$_load(slice sc_0) inline;
+
+;; $Main$_contract_init
+(int, int, slice, cell, cell, int, int) $Main$_contract_init(slice $owner) impure inline;
+
+;; $Main$_contract_load
+(int, int, slice, cell, cell, int, int) $Main$_contract_load() impure inline;
+
+;; $Main$_contract_store
+() $Main$_contract_store((int, int, slice, cell, cell, int, int) v) impure inline;
+
+;; $global_emit
+() $global_emit(cell $body) impure inline;
+
+;; $Int$_fun_toCoinsString
+slice $Int$_fun_toCoinsString(int $self) impure inline;
+
+;; $Main$_fun_order
+((int, int, slice, cell, cell, int, int), tuple) $Main$_fun_order((int, int, slice, cell, cell, int, int) $self, int $id) impure inline_ref;
+
+;; $Main$_fun_orderList
+((int, int, slice, cell, cell, int, int), ()) $Main$_fun_orderList((int, int, slice, cell, cell, int, int) $self, (int, int, slice, int, int, int, int, int, int) $order) impure inline_ref;
+
+;; $Main$_fun_updatedPaired
+((int, int, slice, cell, cell, int, int), ()) $Main$_fun_updatedPaired((int, int, slice, cell, cell, int, int) $self, int $order_id) impure inline_ref;
+
+;; $Pair$_constructor_pair_id_buy_order_id_sell_order_id_completed
+((int, int, int, int)) $Pair$_constructor_pair_id_buy_order_id_sell_order_id_completed(int $pair_id, int $buy_order_id, int $sell_order_id, int $completed) inline;
+
+;; $MatchEvent$_constructor_pair
+(((int, int, int, int))) $MatchEvent$_constructor_pair((int, int, int, int) $pair) inline;
+
+;; $Main$_fun_matchOrders
+((int, int, slice, cell, cell, int, int), ()) $Main$_fun_matchOrders((int, int, slice, cell, cell, int, int) $self, (int, int, slice, int, int, int, int, int, int) $order) impure inline_ref;
+
+;; $Main$_fun_list
+((int, int, slice, cell, cell, int, int), cell) $Main$_fun_list((int, int, slice, cell, cell, int, int) $self, int $base_token, int $quote_token, int $is_buy) impure inline_ref;
+
+;; $Main$_fun_pair
+((int, int, slice, cell, cell, int, int), tuple) $Main$_fun_pair((int, int, slice, cell, cell, int, int) $self, int $id) impure inline_ref;
+
+;; $Main$_fun_balance
+((int, int, slice, cell, cell, int, int), slice) $Main$_fun_balance((int, int, slice, cell, cell, int, int) $self) impure inline_ref;
+
+;; $SendParameters$_constructor_bounce_to_value_mode_body_code_data
+((int, cell, cell, cell, int, slice, int)) $SendParameters$_constructor_bounce_to_value_mode_body_code_data(int $bounce, slice $to, int $value, int $mode, cell $body, cell $code, cell $data) inline;
+
+;; $Main$_fun_forward
+((int, int, slice, cell, cell, int, int), ()) $Main$_fun_forward((int, int, slice, cell, cell, int, int) $self, slice $to, cell $body, int $bounce, tuple $init) impure inline_ref;
+
+;; $Main$_fun_reply
+((int, int, slice, cell, cell, int, int), ()) $Main$_fun_reply((int, int, slice, cell, cell, int, int) $self, cell $body) impure inline;
+
+;; $Main$_fun_notify
+((int, int, slice, cell, cell, int, int), ()) $Main$_fun_notify((int, int, slice, cell, cell, int, int) $self, cell $body) impure inline;
+
+;; $Main$_fun_owner
+((int, int, slice, cell, cell, int, int), slice) $Main$_fun_owner((int, int, slice, cell, cell, int, int) $self) impure inline_ref;
+
+;; $SendParameters$_constructor_to_bounce_value_mode
+((int, cell, cell, cell, int, slice, int)) $SendParameters$_constructor_to_bounce_value_mode(slice $to, int $bounce, int $value, int $mode) inline;
+
+;; $DeployOk$_constructor_queryId
+((int)) $DeployOk$_constructor_queryId(int $queryId) inline;
+
+
+;; tact_Main.stdlib.fc
+global (int, slice, int, slice) __tact_context;
+global slice __tact_context_sender;
+global cell __tact_child_contract_codes;
+global int __tact_randomized;
+
+(int, slice, int, slice) __tact_context_get() inline {
+    return __tact_context;
+}
+
+slice __tact_context_get_sender() inline {
+    return __tact_context_sender;
+}
+
+int __tact_int_eq_nullable_one(int a, int b) inline {
+    return (null?(a)) ? (false) : (a == b);
+}
+
+forall X0, X1 -> (X0, X1) __tact_tuple_destroy_2(tuple v) asm """
+    2 UNTUPLE
+""";
+
+forall X0, X1, X2, X3 -> tuple __tact_tuple_create_4((X0, X1, X2, X3) v) asm """
+    4 TUPLE
+""";
+
+forall X0, X1, X2, X3 -> (X0, X1, X2, X3) __tact_tuple_destroy_4(tuple v) asm """
+    4 UNTUPLE
+""";
+
+forall X0, X1, X2, X3, X4, X5, X6, X7, X8 -> tuple __tact_tuple_create_9((X0, X1, X2, X3, X4, X5, X6, X7, X8) v) asm """
+    9 TUPLE
+""";
+
+forall X0, X1, X2, X3, X4, X5, X6, X7, X8 -> (X0, X1, X2, X3, X4, X5, X6, X7, X8) __tact_tuple_destroy_9(tuple v) asm """
+    9 UNTUPLE
+""";
+
+cell __tact_dict_get_int_cell(cell d, int kl, int k) inline {
+    var (r, ok) = idict_get_ref?(d, kl, k);
+    if (ok) {
+        return r;
+    } else {
+        return null();
+    }
+}
+
+(int, cell, int) __tact_dict_min_int_cell(cell d, int kl) inline {
+    var (key, value, flag) = idict_get_min_ref?(d, kl);
+    if (flag) {
+        return (key, value, flag);
+    } else {
+        return (null(), null(), flag);
+    }
+}
+
+(int, cell, int) __tact_dict_next_int_cell(cell d, int kl, int pivot) inline {
+    var (key, value, flag) = idict_get_next?(d, kl, pivot);
+    if (flag) {
+        return (key, value~load_ref(), flag);
+    } else {
+        return (null(), null(), flag);
+    }
+}
+
+(cell, ()) __tact_dict_set_int_cell(cell d, int kl, int k, cell v) inline {
+    if (null?(v)) {
+        var (r, ok) = idict_delete?(d, kl, k);
+        return (r, ());
+    } else {
+        return (idict_set_ref(d, kl, k, v), ());
+    }
+}
+
+builder $global_beginCell() impure asm """
+    NEWC
+""";
+
+int $global_min(int $x, int $y) impure asm """
+    MIN
+""";
+
+int $global_myBalance() impure asm """
+    BALANCE FIRST
+""";
+
+() $global_nativeReserve(int $amount, int $mode) impure asm """
+    RAWRESERVE
+""";
+
+() $global_send((int, cell, cell, cell, int, slice, int) $params) impure asm """
+    NEWC
+    b{01} STSLICECONST  // store tag = $0 and ihr_disabled = true
+    1 STI               // store `bounce`
+    b{000} STSLICECONST // store bounced = false and src = addr_none
+    STSLICE             // store `to`
+    SWAP
+    STGRAMS             // store `value`
+    105 PUSHINT         // 1 + 4 + 4 + 64 + 32
+    STZEROES            // store currency_collection, ihr_fee, fwd_fee, created_lt and created_at
+    // → Stack state
+    // s0: Builder
+    // s1: `data`
+    // s2: `code`
+    // s3: `body`
+    // s4: `mode`
+
+    // Group 2: Placing the Builder after code and data, then checking those for nullability
+    s2 XCHG0
+    DUP2
+    ISNULL
+    SWAP
+    ISNULL
+    AND
+    // → Stack state
+    // s0: -1 (true) if `data` and `code` are both null, 0 (false) otherwise
+    // s1: `code`
+    // s2: `data`
+    // s3: Builder
+    // s4: `body`
+    // s5: `mode`
+
+    // Group 3: Left branch of the IFELSE, executed if s0 is -1 (true)
+    <{
+        DROP2 // drop `data` and `code`, since either of those is null
+        b{0} STSLICECONST
+    }> PUSHCONT
+
+    // Group 3: Right branch of the IFELSE, executed if s0 is 0 (false)
+    <{
+        // _ split_depth:(Maybe (## 5))
+        //   special:(Maybe TickTock)
+        //   code:(Maybe ^Cell)
+        //   data:(Maybe ^Cell)
+        //   library:(Maybe ^Cell)
+        // = StateInit;
+        ROT                // place message Builder on top
+        b{10} STSLICECONST // store Maybe = true, Either = false
+        // Start composing inlined StateInit
+        b{00} STSLICECONST // store split_depth and special first
+        STDICT             // store code
+        STDICT             // store data
+        b{0} STSLICECONST  // store library
+    }> PUSHCONT
+
+    // Group 3: IFELSE that does the branching shown above
+    IFELSE
+    // → Stack state
+    // s0: Builder
+    // s1: null or StateInit
+    // s2: `body`
+    // s3: `mode`
+
+    // Group 4: Finalizing the message
+    STDICT // store `body` as ref with an extra Maybe bit, since `body` might be null
+    ENDC
+    // → Stack state
+    // s0: Cell
+    // s1: `mode`
+
+    // Group 5: Sending the message, with `mode` on top
+    SWAP
+    SENDRAWMSG // https://github.com/tact-lang/tact/issues/1558
+""";
+
+() $global_nativeSendMessage(cell $cell, int $mode) impure asm """
+    SENDRAWMSG
+""";
+
+cell $Builder$_fun_endCell(builder $self) impure asm """
+    ENDC
+""";
+
+builder $Builder$_fun_storeRef(cell $cell, builder $self) impure asm """
+    STREF
+""";
+
+() $global_emit(cell $body) impure inline {
+    cell $c = $Builder$_fun_endCell($Builder$_fun_storeRef($body, store_uint($global_beginCell(), 15211807202738752817960438464513, 104)));
+    $global_nativeSendMessage($c, 0);
+}
+
+slice $Int$_fun_toFloatString(int $self, int $digits) impure asm """
+    DUP // x digits digits
+    1 LESSINT // x digits digits<=0
+    134 THROWIF // x digits
+    DUP // x digits digits
+    77 GTINT // x digits digits>77
+    134 THROWIF // x digits
+
+    NEWC // x digits b
+    ROTREV // b x digits
+    s1 PUSH // b x digits x
+    0 LESSINT // b x digits x<0?
+
+    <{
+        // b x digits
+        ROT // x digits b
+        x{2d} STSLICECONST // x digits b
+        ROT // digits b x
+        NEGATE // digits b -x
+        ROT // b -x digits
+    }>CONT IF
+
+    // b x digits
+    ONE // b x digits 1
+    OVER // b x digits 1 digits
+
+    <{ 10 MULCONST }>CONT REPEAT // b x digits 10^digits
+
+    s1 s2 XCHG // b digits x 10^digits
+    DIVMOD // b digits left right
+    s3 s3 XCHG2 // right digits b left
+
+    <{
+        // b x
+
+        <{
+            // b x
+            10 PUSHINT DIVMOD // b x/10 x%10
+            48 ADDCONST // b x/10 (x%10+48)
+            s2 s2 s0 XC2PU ISZERO // (x%10+48) b x/10 x/10==0?
+        }>CONT UNTIL
+        // ... b x
+
+        DROP // ... b
+        DEPTH DEC // ... b n
+        <{ 8 STU }>CONT REPEAT // b
+    }>CONT 2 1 CALLXARGS
+
+    // right digits "left"
+
+    ROT // digits "left" right
+    DUP // digits "left" right right
+    ISZERO // digits "left" right right==0?
+
+    <{
+        // digits "left" right
+        DROP // digits "left"
+        NIP // "left"
+    }>CONT
+
+    <{
+        // digits "left" right
+        ZERO // digits "left" right 0
+        SWAP // digits "left" 0 right
+
+        <{
+            // digits "left" i right
+            DUP // digits "left" i right right
+            10 PUSHINT // digits "left" i right right 10
+            MOD // digits "left" i right right%10
+            ISZERO // digits "left" i right right%10==0?
+        }>CONT
+
+        <{
+            // digits "left" i right
+            10 PUSHINT // digits "left" i right 10
+            DIV // digits "left" i right/10
+            SWAP // digits "left" right/10 i
+            INC // digits "left" right/10 i+1
+            SWAP // digits "left" i+1 right/10
+        }>CONT
+
+        WHILE // digits "left" i right
+
+        <{
+            // x
+            NEWC // x b
+            SWAP // b x
+
+            <{
+                // b x
+                10 PUSHINT DIVMOD // b x/10 x%10
+                48 ADDCONST // b x/10 (x%10+48)
+                s2 s2 s0 XC2PU ISZERO // (x%10+48) b x/10 x/10==0?
+            }>CONT UNTIL
+            // ... b x
+
+            DROP // ... b
+            DEPTH DEC DUP // ... b n n
+            ROTREV // ... n b n
+            <{
+                // ... c n b
+                s1 s2 XCHG // ... n c b
+                8 STU // ... n b
+            }>CONT REPEAT // n b
+        }>CONT 1 2 CALLXARGS
+        // digits "left" i right_digits "right"
+        ROTREV // digits "left" "right" i right_digits
+        ADD // digits "left" "right" right_digits
+
+        s3 s1 XCHG // "right" "left" digits right_digits
+        SUB // "right" "left" digits_diff
+        SWAP // "right" digits_diff "left"
+        x{2e} STSLICECONST // "right" digits_diff "left."
+        SWAP // "right" "left." digits_diff
+
+        <{
+            // "right" "left."
+            x{30} STSLICECONST // "right" "left.0"
+        }>CONT REPEAT // "right" "left.000"
+
+        STB // "left.000right"
+    }>CONT
+
+    IFELSE // b
+
+    ENDC CTOS // s
+""";
+
+slice $Int$_fun_toCoinsString(int $self) impure inline {
+    var ($self) = $self;
+    return $Int$_fun_toFloatString($self, 9);
+}
+
+((int, int, slice, cell, cell, int, int), ()) $Main$_fun_forward((int, int, slice, cell, cell, int, int) $self, slice $to, cell $body, int $bounce, tuple $init) impure inline_ref {
+    var (($self'min_ton_for_storage, $self'max_orders_count, $self'owner, $self'order_list, $self'pairs, $self'pair_id, $self'order_count)) = $self;
+    var ($init) = $init;
+    cell $code = null();
+    cell $data = null();
+    if ((~ null?($init))) {
+        var ($init2'code, $init2'data) = $StateInit$_not_null($init);
+        $code = $init2'code;
+        $data = $init2'data;
+    }
+    if (false) {
+        var ($ctx'bounceable, $ctx'sender, $ctx'value, $ctx'raw) = __tact_context_get();
+        int $balance = $global_myBalance();
+        int $balanceBeforeMessage = ($balance - $ctx'value);
+        if (($balanceBeforeMessage < 0)) {
+            $global_nativeReserve(0, 0);
+            $global_send($SendParameters$_constructor_bounce_to_value_mode_body_code_data($bounce, $to, 0, 130, $body, $code, $data));
+            return (($self'min_ton_for_storage, $self'max_orders_count, $self'owner, $self'order_list, $self'pairs, $self'pair_id, $self'order_count), ());
+        }
+    }
+    $global_send($SendParameters$_constructor_bounce_to_value_mode_body_code_data($bounce, $to, 0, 66, $body, $code, $data));
+    return (($self'min_ton_for_storage, $self'max_orders_count, $self'owner, $self'order_list, $self'pairs, $self'pair_id, $self'order_count), ());
+}
+
+((int, int, slice, cell, cell, int, int), ()) $Main$_fun_reply((int, int, slice, cell, cell, int, int) $self, cell $body) impure inline {
+    var (($self'min_ton_for_storage, $self'max_orders_count, $self'owner, $self'order_list, $self'pairs, $self'pair_id, $self'order_count)) = $self;
+    ($self'min_ton_for_storage, $self'max_orders_count, $self'owner, $self'order_list, $self'pairs, $self'pair_id, $self'order_count)~$Main$_fun_forward(__tact_context_get_sender(), $body, true, null());
+    return (($self'min_ton_for_storage, $self'max_orders_count, $self'owner, $self'order_list, $self'pairs, $self'pair_id, $self'order_count), ());
+}
+
+((int, int, slice, cell, cell, int, int), ()) $Main$_fun_notify((int, int, slice, cell, cell, int, int) $self, cell $body) impure inline {
+    var (($self'min_ton_for_storage, $self'max_orders_count, $self'owner, $self'order_list, $self'pairs, $self'pair_id, $self'order_count)) = $self;
+    ($self'min_ton_for_storage, $self'max_orders_count, $self'owner, $self'order_list, $self'pairs, $self'pair_id, $self'order_count)~$Main$_fun_forward(__tact_context_get_sender(), $body, false, null());
+    return (($self'min_ton_for_storage, $self'max_orders_count, $self'owner, $self'order_list, $self'pairs, $self'pair_id, $self'order_count), ());
+}
+
+((int, int, slice, cell, cell, int, int), slice) $Main$_fun_owner((int, int, slice, cell, cell, int, int) $self) impure inline_ref {
+    var (($self'min_ton_for_storage, $self'max_orders_count, $self'owner, $self'order_list, $self'pairs, $self'pair_id, $self'order_count)) = $self;
+    var $fresh$ret_7 = $self'owner;
+    return (($self'min_ton_for_storage, $self'max_orders_count, $self'owner, $self'order_list, $self'pairs, $self'pair_id, $self'order_count), $fresh$ret_7);
+}
+
+;; tact_Main.constants.fc
+;; Cell ioN8appklUEJWDiaQL/WEG8YhIWPfFCpsHu0VMFZYnw=
+cell __gen_cell_cell_8a837c6a9a6495410958389a40bfd6106f1884858f7c50a9b07bb454c159627c() asm """
+    B{b5ee9c7241010101001700002a00000000526566756e6420676173206578636573738709edbb} B>boc PUSHREF
+""";
+
+;; tact_Main.storage.fc
+;;
+;; Type: StateInit
+;; TLB: _ code:^cell data:^cell = StateInit
+;;
+
+((cell, cell)) $StateInit$_not_null(tuple v) inline {
+    throw_if(128, null?(v));
+    var (cell vvv'code, cell vvv'data) = __tact_tuple_destroy_2(v);
+    return (vvv'code, vvv'data);
+}
+
+;;
+;; Type: Context
+;; TLB: _ bounceable:bool sender:address value:int257 raw:^slice = Context
+;;
+
+_ $Context$_get_value((int, slice, int, slice) v) inline {
+    var (v'bounceable, v'sender, v'value, v'raw) = v;
+    return v'value;
+}
+
+;;
+;; Type: SendParameters
+;; TLB: _ mode:int257 body:Maybe ^cell code:Maybe ^cell data:Maybe ^cell value:int257 to:address bounce:bool = SendParameters
+;;
+
+((int, cell, cell, cell, int, slice, int)) $SendParameters$_constructor_bounce_to_value_mode_body_code_data(int $bounce, slice $to, int $value, int $mode, cell $body, cell $code, cell $data) inline {
+    return ($mode, $body, $code, $data, $value, $to, $bounce);
+}
+
+((int, cell, cell, cell, int, slice, int)) $SendParameters$_constructor_to_bounce_value_mode(slice $to, int $bounce, int $value, int $mode) inline {
+    return ($mode, null(), null(), null(), $value, $to, $bounce);
+}
+
+;;
+;; Type: Deploy
+;; Header: 0x946a98b6
+;; TLB: deploy#946a98b6 queryId:uint64 = Deploy
+;;
+
+(slice, ((int))) $Deploy$_load_without_opcode(slice sc_0) inline {
+    var v'queryId = sc_0~load_uint(64);
+    return (sc_0, (v'queryId));
+}
+
+;;
+;; Type: DeployOk
+;; Header: 0xaff90f57
+;; TLB: deploy_ok#aff90f57 queryId:uint64 = DeployOk
+;;
+
+builder $DeployOk$_store(builder build_0, (int) v) inline {
+    var (v'queryId) = v;
+    build_0 = store_uint(build_0, 2952335191, 32);
+    build_0 = build_0.store_uint(v'queryId, 64);
+    return build_0;
+}
+
+cell $DeployOk$_store_cell((int) v) inline {
+    return $DeployOk$_store(begin_cell(), v).end_cell();
+}
+
+((int)) $DeployOk$_constructor_queryId(int $queryId) inline {
+    return ($queryId);
+}
+
+;;
+;; Type: Order
+;; TLB: _ id:uint32 timestamp:uint64 user_id:address amount:uint32 price:uint32 is_buy:bool is_paired:Maybe bool base_token:uint32 quote_token:uint32 = Order
+;;
+
+builder $Order$_store(builder build_0, (int, int, slice, int, int, int, int, int, int) v) inline {
+    var (v'id, v'timestamp, v'user_id, v'amount, v'price, v'is_buy, v'is_paired, v'base_token, v'quote_token) = v;
+    build_0 = build_0.store_uint(v'id, 32);
+    build_0 = build_0.store_uint(v'timestamp, 64);
+    build_0 = build_0.store_slice(v'user_id);
+    build_0 = build_0.store_uint(v'amount, 32);
+    build_0 = build_0.store_uint(v'price, 32);
+    build_0 = build_0.store_int(v'is_buy, 1);
+    build_0 = ~ null?(v'is_paired) ? build_0.store_int(true, 1).store_int(v'is_paired, 1) : build_0.store_int(false, 1);
+    build_0 = build_0.store_uint(v'base_token, 32);
+    build_0 = build_0.store_uint(v'quote_token, 32);
+    return build_0;
+}
+
+cell $Order$_store_cell((int, int, slice, int, int, int, int, int, int) v) inline {
+    return $Order$_store(begin_cell(), v).end_cell();
+}
+
+((int, int, slice, int, int, int, int, int, int)) $Order$_not_null(tuple v) inline {
+    throw_if(128, null?(v));
+    var (int vvv'id, int vvv'timestamp, slice vvv'user_id, int vvv'amount, int vvv'price, int vvv'is_buy, int vvv'is_paired, int vvv'base_token, int vvv'quote_token) = __tact_tuple_destroy_9(v);
+    return (vvv'id, vvv'timestamp, vvv'user_id, vvv'amount, vvv'price, vvv'is_buy, vvv'is_paired, vvv'base_token, vvv'quote_token);
+}
+
+cell $Order$_store_opt(tuple v) inline {
+    if (null?(v)) {
+        return null();
+    }
+    return $Order$_store_cell($Order$_not_null(v));
+}
+
+(slice, ((int, int, slice, int, int, int, int, int, int))) $Order$_load(slice sc_0) inline {
+    var v'id = sc_0~load_uint(32);
+    var v'timestamp = sc_0~load_uint(64);
+    var v'user_id = sc_0~load_msg_addr();
+    var v'amount = sc_0~load_uint(32);
+    var v'price = sc_0~load_uint(32);
+    var v'is_buy = sc_0~load_int(1);
+    var v'is_paired = sc_0~load_int(1) ? sc_0~load_int(1) : null();
+    var v'base_token = sc_0~load_uint(32);
+    var v'quote_token = sc_0~load_uint(32);
+    return (sc_0, (v'id, v'timestamp, v'user_id, v'amount, v'price, v'is_buy, v'is_paired, v'base_token, v'quote_token));
+}
+
+tuple $Order$_as_optional((int, int, slice, int, int, int, int, int, int) v) inline {
+    var (v'id, v'timestamp, v'user_id, v'amount, v'price, v'is_buy, v'is_paired, v'base_token, v'quote_token) = v;
+    return __tact_tuple_create_9(v'id, v'timestamp, v'user_id, v'amount, v'price, v'is_buy, v'is_paired, v'base_token, v'quote_token);
+}
+
+tuple $Order$_load_opt(cell cl) inline {
+    if (null?(cl)) {
+        return null();
+    }
+    var sc = cl.begin_parse();
+    return $Order$_as_optional(sc~$Order$_load());
+}
+
+((int, int, slice, int, int, int, int, int, int)) $Order$_tensor_cast((int, int, slice, int, int, int, int, int, int) v) asm "NOP";
+
+tuple $Order$_to_tuple(((int, int, slice, int, int, int, int, int, int)) v) inline {
+    var (v'id, v'timestamp, v'user_id, v'amount, v'price, v'is_buy, v'is_paired, v'base_token, v'quote_token) = v;
+    return __tact_tuple_create_9(v'id, v'timestamp, v'user_id, v'amount, v'price, v'is_buy, v'is_paired, v'base_token, v'quote_token);
+}
+
+tuple $Order$_to_opt_tuple(tuple v) inline {
+    if (null?(v)) { return null(); } 
+    return $Order$_to_tuple($Order$_not_null(v)); 
+}
+
+tuple $Order$_to_opt_external(tuple v) inline {
+    var loaded = $Order$_to_opt_tuple(v);
+    if (null?(loaded)) {
+        return null();
+    } else {
+        return (loaded);
+    }
+}
+
+;;
+;; Type: CreateOrder
+;; Header: 0xb0128d23
+;; TLB: create_order#b0128d23 order:Order{id:uint32,timestamp:uint64,user_id:address,amount:uint32,price:uint32,is_buy:bool,is_paired:Maybe bool,base_token:uint32,quote_token:uint32} = CreateOrder
+;;
+
+(slice, (((int, int, slice, int, int, int, int, int, int)))) $CreateOrder$_load_without_opcode(slice sc_0) inline {
+    var v'order = sc_0~$Order$_load();
+    return (sc_0, (v'order));
+}
+
+;;
+;; Type: RemoveOrder
+;; Header: 0xa81dbc5d
+;; TLB: remove_order#a81dbc5d order_id:uint32 = RemoveOrder
+;;
+
+(slice, ((int))) $RemoveOrder$_load_without_opcode(slice sc_0) inline {
+    var v'order_id = sc_0~load_uint(32);
+    return (sc_0, (v'order_id));
+}
+
+;;
+;; Type: Pair
+;; TLB: _ pair_id:uint32 buy_order_id:uint32 sell_order_id:uint32 completed:Maybe bool = Pair
+;;
+
+builder $Pair$_store(builder build_0, (int, int, int, int) v) inline {
+    var (v'pair_id, v'buy_order_id, v'sell_order_id, v'completed) = v;
+    build_0 = build_0.store_uint(v'pair_id, 32);
+    build_0 = build_0.store_uint(v'buy_order_id, 32);
+    build_0 = build_0.store_uint(v'sell_order_id, 32);
+    build_0 = ~ null?(v'completed) ? build_0.store_int(true, 1).store_int(v'completed, 1) : build_0.store_int(false, 1);
+    return build_0;
+}
+
+cell $Pair$_store_cell((int, int, int, int) v) inline {
+    return $Pair$_store(begin_cell(), v).end_cell();
+}
+
+(slice, ((int, int, int, int))) $Pair$_load(slice sc_0) inline {
+    var v'pair_id = sc_0~load_uint(32);
+    var v'buy_order_id = sc_0~load_uint(32);
+    var v'sell_order_id = sc_0~load_uint(32);
+    var v'completed = sc_0~load_int(1) ? sc_0~load_int(1) : null();
+    return (sc_0, (v'pair_id, v'buy_order_id, v'sell_order_id, v'completed));
+}
+
+tuple $Pair$_as_optional((int, int, int, int) v) inline {
+    var (v'pair_id, v'buy_order_id, v'sell_order_id, v'completed) = v;
+    return __tact_tuple_create_4(v'pair_id, v'buy_order_id, v'sell_order_id, v'completed);
+}
+
+tuple $Pair$_load_opt(cell cl) inline {
+    if (null?(cl)) {
+        return null();
+    }
+    var sc = cl.begin_parse();
+    return $Pair$_as_optional(sc~$Pair$_load());
+}
+
+((int, int, int, int)) $Pair$_not_null(tuple v) inline {
+    throw_if(128, null?(v));
+    var (int vvv'pair_id, int vvv'buy_order_id, int vvv'sell_order_id, int vvv'completed) = __tact_tuple_destroy_4(v);
+    return (vvv'pair_id, vvv'buy_order_id, vvv'sell_order_id, vvv'completed);
+}
+
+tuple $Pair$_to_tuple(((int, int, int, int)) v) inline {
+    var (v'pair_id, v'buy_order_id, v'sell_order_id, v'completed) = v;
+    return __tact_tuple_create_4(v'pair_id, v'buy_order_id, v'sell_order_id, v'completed);
+}
+
+tuple $Pair$_to_opt_tuple(tuple v) inline {
+    if (null?(v)) { return null(); } 
+    return $Pair$_to_tuple($Pair$_not_null(v)); 
+}
+
+tuple $Pair$_to_opt_external(tuple v) inline {
+    var loaded = $Pair$_to_opt_tuple(v);
+    if (null?(loaded)) {
+        return null();
+    } else {
+        return (loaded);
+    }
+}
+
+((int, int, int, int)) $Pair$_constructor_pair_id_buy_order_id_sell_order_id_completed(int $pair_id, int $buy_order_id, int $sell_order_id, int $completed) inline {
+    return ($pair_id, $buy_order_id, $sell_order_id, $completed);
+}
+
+;;
+;; Type: MatchEvent
+;; Header: 0xeb0b5669
+;; TLB: match_event#eb0b5669 pair:Pair{pair_id:uint32,buy_order_id:uint32,sell_order_id:uint32,completed:Maybe bool} = MatchEvent
+;;
+
+builder $MatchEvent$_store(builder build_0, ((int, int, int, int)) v) inline {
+    var ((v'pair'pair_id, v'pair'buy_order_id, v'pair'sell_order_id, v'pair'completed)) = v;
+    build_0 = store_uint(build_0, 3943388777, 32);
+    build_0 = $Pair$_store(build_0, (v'pair'pair_id, v'pair'buy_order_id, v'pair'sell_order_id, v'pair'completed));
+    return build_0;
+}
+
+cell $MatchEvent$_store_cell(((int, int, int, int)) v) inline {
+    return $MatchEvent$_store(begin_cell(), v).end_cell();
+}
+
+(((int, int, int, int))) $MatchEvent$_constructor_pair((int, int, int, int) $pair) inline {
+    return ($pair);
+}
+
+;;
+;; Type: Withdraw
+;; Header: 0x94cc7430
+;; TLB: withdraw#94cc7430 amount:uint64 = Withdraw
+;;
+
+(slice, ((int))) $Withdraw$_load_without_opcode(slice sc_0) inline {
+    var v'amount = sc_0~load_uint(64);
+    return (sc_0, (v'amount));
+}
+
+;;
+;; Type: ChangeOrderCount
+;; Header: 0x2cea1e54
+;; TLB: change_order_count#2cea1e54 new_max_count:uint32 = ChangeOrderCount
+;;
+
+(slice, ((int))) $ChangeOrderCount$_load_without_opcode(slice sc_0) inline {
+    var v'new_max_count = sc_0~load_uint(32);
+    return (sc_0, (v'new_max_count));
+}
+
+;;
+;; Type: CompletePair
+;; Header: 0x4f475d35
+;; TLB: complete_pair#4f475d35 pair_id:uint32 = CompletePair
+;;
+
+(slice, ((int))) $CompletePair$_load_without_opcode(slice sc_0) inline {
+    var v'pair_id = sc_0~load_uint(32);
+    return (sc_0, (v'pair_id));
+}
+
+;;
+;; Type: Main
+;; TLB: _ min_ton_for_storage:int257 max_orders_count:int257 owner:address order_list:dict<int, ^Order{id:uint32,timestamp:uint64,user_id:address,amount:uint32,price:uint32,is_buy:bool,is_paired:Maybe bool,base_token:uint32,quote_token:uint32}> pairs:dict<int, ^Pair{pair_id:uint32,buy_order_id:uint32,sell_order_id:uint32,completed:Maybe bool}> pair_id:uint64 order_count:uint64 = Main
+;;
+
+builder $Main$_store(builder build_0, (int, int, slice, cell, cell, int, int) v) inline {
+    var (v'min_ton_for_storage, v'max_orders_count, v'owner, v'order_list, v'pairs, v'pair_id, v'order_count) = v;
+    build_0 = build_0.store_int(v'min_ton_for_storage, 257);
+    build_0 = build_0.store_int(v'max_orders_count, 257);
+    build_0 = build_0.store_slice(v'owner);
+    build_0 = build_0.store_dict(v'order_list);
+    build_0 = build_0.store_dict(v'pairs);
+    build_0 = build_0.store_uint(v'pair_id, 64);
+    build_0 = build_0.store_uint(v'order_count, 64);
+    return build_0;
+}
+
+(slice, ((int, int, slice, cell, cell, int, int))) $Main$_load(slice sc_0) inline {
+    var v'min_ton_for_storage = sc_0~load_int(257);
+    var v'max_orders_count = sc_0~load_int(257);
+    var v'owner = sc_0~load_msg_addr();
+    var v'order_list = sc_0~load_dict();
+    var v'pairs = sc_0~load_dict();
+    var v'pair_id = sc_0~load_uint(64);
+    var v'order_count = sc_0~load_uint(64);
+    return (sc_0, (v'min_ton_for_storage, v'max_orders_count, v'owner, v'order_list, v'pairs, v'pair_id, v'order_count));
+}
+
+(slice, ((slice))) $Main$init$_load(slice sc_0) inline {
+    var v'owner = sc_0~load_msg_addr();
+    return (sc_0, (v'owner));
+}
+
+(int, int, slice, cell, cell, int, int) $Main$_contract_load() impure inline {
+    slice $sc = get_data().begin_parse();
+    int $loaded = $sc~load_int(1);
+    if ($loaded) {
+        return $sc~$Main$_load();
+    }
+    else {
+        (slice $owner) = $sc~$Main$init$_load();
+        $sc.end_parse();
+        return $Main$_contract_init($owner);
+    }
+}
+
+() $Main$_contract_store((int, int, slice, cell, cell, int, int) v) impure inline {
+    builder b = begin_cell();
+    b = b.store_int(true, 1);
+    b = $Main$_store(b, v);
+    set_data(b.end_cell());
+}
+
+;;
+;; Contract Main functions
+;;
+
+(int, int, slice, cell, cell, int, int) $Main$_contract_init(slice $owner) impure inline {
+    var (($self'min_ton_for_storage, $self'max_orders_count, $self'owner, $self'order_list, $self'pairs, $self'pair_id, $self'order_count)) = (null(), null(), null(), null(), null(), null(), null());
+    $self'owner = $owner;
+    $self'pair_id = 0;
+    $self'order_count = 0;
+    $self'min_ton_for_storage = 10000000000;
+    $self'max_orders_count = 10000;
+    return ($self'min_ton_for_storage, $self'max_orders_count, $self'owner, $self'order_list, $self'pairs, $self'pair_id, $self'order_count);
+}
+
+((int, int, slice, cell, cell, int, int), tuple) $Main$_fun_order((int, int, slice, cell, cell, int, int) $self, int $id) impure inline_ref {
+    var (($self'min_ton_for_storage, $self'max_orders_count, $self'owner, $self'order_list, $self'pairs, $self'pair_id, $self'order_count)) = $self;
+    var $fresh$ret_5 = $Order$_load_opt(__tact_dict_get_int_cell($self'order_list, 257, $id));
+    return (($self'min_ton_for_storage, $self'max_orders_count, $self'owner, $self'order_list, $self'pairs, $self'pair_id, $self'order_count), $fresh$ret_5);
+}
+
+((int, int, slice, cell, cell, int, int), ()) $Main$_fun_orderList((int, int, slice, cell, cell, int, int) $self, (int, int, slice, int, int, int, int, int, int) $order) impure inline_ref {
+    var (($self'min_ton_for_storage, $self'max_orders_count, $self'owner, $self'order_list, $self'pairs, $self'pair_id, $self'order_count)) = $self;
+    var (($order'id, $order'timestamp, $order'user_id, $order'amount, $order'price, $order'is_buy, $order'is_paired, $order'base_token, $order'quote_token)) = $order;
+    throw_unless(34536, null?(($self'min_ton_for_storage, $self'max_orders_count, $self'owner, $self'order_list, $self'pairs, $self'pair_id, $self'order_count)~$Main$_fun_order($order'id)));
+    $self'order_list~__tact_dict_set_int_cell(257, $order'id, $Order$_store_cell(($order'id, $order'timestamp, $order'user_id, $order'amount, $order'price, $order'is_buy, $order'is_paired, $order'base_token, $order'quote_token)));
+    return (($self'min_ton_for_storage, $self'max_orders_count, $self'owner, $self'order_list, $self'pairs, $self'pair_id, $self'order_count), ());
+}
+
+((int, int, slice, cell, cell, int, int), ()) $Main$_fun_updatedPaired((int, int, slice, cell, cell, int, int) $self, int $order_id) impure inline_ref {
+    var (($self'min_ton_for_storage, $self'max_orders_count, $self'owner, $self'order_list, $self'pairs, $self'pair_id, $self'order_count)) = $self;
+    throw_unless(18518, (~ null?($Order$_load_opt(__tact_dict_get_int_cell($self'order_list, 257, $order_id)))));
+    var ($order'id, $order'timestamp, $order'user_id, $order'amount, $order'price, $order'is_buy, $order'is_paired, $order'base_token, $order'quote_token) = $Order$_not_null($Order$_load_opt(__tact_dict_get_int_cell($self'order_list, 257, $order_id)));
+    $order'is_paired = true;
+    $self'order_list~__tact_dict_set_int_cell(257, $order_id, $Order$_store_cell(($order'id, $order'timestamp, $order'user_id, $order'amount, $order'price, $order'is_buy, $order'is_paired, $order'base_token, $order'quote_token)));
+    return (($self'min_ton_for_storage, $self'max_orders_count, $self'owner, $self'order_list, $self'pairs, $self'pair_id, $self'order_count), ());
+}
+
+((int, int, slice, cell, cell, int, int), ()) $Main$_fun_matchOrders((int, int, slice, cell, cell, int, int) $self, (int, int, slice, int, int, int, int, int, int) $order) impure inline_ref {
+    var (($self'min_ton_for_storage, $self'max_orders_count, $self'owner, $self'order_list, $self'pairs, $self'pair_id, $self'order_count)) = $self;
+    var (($order'id, $order'timestamp, $order'user_id, $order'amount, $order'price, $order'is_buy, $order'is_paired, $order'base_token, $order'quote_token)) = $order;
+    cell $matches = null();
+    int $matches_length = 0;
+    int $index = 0;
+    var ($k, $v, $fresh$flag_0) = __tact_dict_min_int_cell($self'order_list, 257);
+    while ($fresh$flag_0) {
+        var ($v'id, $v'timestamp, $v'user_id, $v'amount, $v'price, $v'is_buy, $v'is_paired, $v'base_token, $v'quote_token) = $Order$_not_null($Order$_load_opt($v));
+        if (( (( (( (( (( (($v'amount == $order'amount)) ? (($v'base_token == $order'quote_token)) : (false) )) ? (($v'quote_token == $order'base_token)) : (false) )) ? ((($v'amount * $v'price) == ($order'amount * $order'price))) : (false) )) ? (($v'is_buy != $order'is_buy)) : (false) )) ? (__tact_int_eq_nullable_one($v'is_paired, false)) : (false) )) {
+            $matches~__tact_dict_set_int_cell(257, $index, $Order$_store_cell(($v'id, $v'timestamp, $v'user_id, $v'amount, $v'price, $v'is_buy, $v'is_paired, $v'base_token, $v'quote_token)));
+            $index = $index += 1;
+            $matches_length = $matches_length += 1;
+        }
+        ($k, $v, $fresh$flag_0) = __tact_dict_next_int_cell($self'order_list, 257, $k);
+    }
+    if (($matches_length > 0)) {
+        throw_unless(25124, (~ null?($Order$_load_opt(__tact_dict_get_int_cell($matches, 257, 0)))));
+        var ($first_order'id, $first_order'timestamp, $first_order'user_id, $first_order'amount, $first_order'price, $first_order'is_buy, $first_order'is_paired, $first_order'base_token, $first_order'quote_token) = $Order$_not_null($Order$_load_opt(__tact_dict_get_int_cell($matches, 257, 0)));
+        int $min_time = $first_order'timestamp;
+        int $chosen_id = $first_order'id;
+        var ($k, $v, $fresh$flag_1) = __tact_dict_min_int_cell($matches, 257);
+        while ($fresh$flag_1) {
+            var ($v'id, $v'timestamp, $v'user_id, $v'amount, $v'price, $v'is_buy, $v'is_paired, $v'base_token, $v'quote_token) = $Order$_not_null($Order$_load_opt($v));
+            if (($v'timestamp < $min_time)) {
+                $min_time = $v'timestamp;
+                $chosen_id = $v'id;
+            }
+            ($k, $v, $fresh$flag_1) = __tact_dict_next_int_cell($matches, 257, $k);
+        }
+        ($self'min_ton_for_storage, $self'max_orders_count, $self'owner, $self'order_list, $self'pairs, $self'pair_id, $self'order_count)~$Main$_fun_updatedPaired($chosen_id);
+        ($self'min_ton_for_storage, $self'max_orders_count, $self'owner, $self'order_list, $self'pairs, $self'pair_id, $self'order_count)~$Main$_fun_updatedPaired($order'id);
+        int $buy_order_id = 0;
+        int $sell_order_id = 0;
+        if ($order'is_buy) {
+            $buy_order_id = $order'id;
+            $sell_order_id = $chosen_id;
+        } else {
+            $buy_order_id = $chosen_id;
+            $sell_order_id = $order'id;
+        }
+        $self'pair_id = $self'pair_id += 1;
+        var ($pair'pair_id, $pair'buy_order_id, $pair'sell_order_id, $pair'completed) = $Pair$_constructor_pair_id_buy_order_id_sell_order_id_completed($self'pair_id, $buy_order_id, $sell_order_id, false);
+        $self'pairs~__tact_dict_set_int_cell(257, $pair'pair_id, $Pair$_store_cell(($pair'pair_id, $pair'buy_order_id, $pair'sell_order_id, $pair'completed)));
+        $global_emit($MatchEvent$_store_cell($MatchEvent$_constructor_pair(($pair'pair_id, $pair'buy_order_id, $pair'sell_order_id, $pair'completed))));
+    }
+    return (($self'min_ton_for_storage, $self'max_orders_count, $self'owner, $self'order_list, $self'pairs, $self'pair_id, $self'order_count), ());
+}
+
+((int, int, slice, cell, cell, int, int), cell) $Main$_fun_list((int, int, slice, cell, cell, int, int) $self, int $base_token, int $quote_token, int $is_buy) impure inline_ref {
+    var (($self'min_ton_for_storage, $self'max_orders_count, $self'owner, $self'order_list, $self'pairs, $self'pair_id, $self'order_count)) = $self;
+    cell $matches = null();
+    int $iterator = 1;
+    var ($k, $v, $fresh$flag_2) = __tact_dict_min_int_cell($self'order_list, 257);
+    while ($fresh$flag_2) {
+        var ($v'id, $v'timestamp, $v'user_id, $v'amount, $v'price, $v'is_buy, $v'is_paired, $v'base_token, $v'quote_token) = $Order$_not_null($Order$_load_opt($v));
+        if (( (( (($v'base_token == $base_token)) ? (($v'quote_token == $quote_token)) : (false) )) ? (($v'is_buy == $is_buy)) : (false) )) {
+            $matches~__tact_dict_set_int_cell(257, $iterator, $Order$_store_cell(($v'id, $v'timestamp, $v'user_id, $v'amount, $v'price, $v'is_buy, $v'is_paired, $v'base_token, $v'quote_token)));
+            $iterator = $iterator += 1;
+        }
+        ($k, $v, $fresh$flag_2) = __tact_dict_next_int_cell($self'order_list, 257, $k);
+    }
+    var $fresh$ret_3 = $matches;
+    return (($self'min_ton_for_storage, $self'max_orders_count, $self'owner, $self'order_list, $self'pairs, $self'pair_id, $self'order_count), $fresh$ret_3);
+}
+
+((int, int, slice, cell, cell, int, int), tuple) $Main$_fun_pair((int, int, slice, cell, cell, int, int) $self, int $id) impure inline_ref {
+    var (($self'min_ton_for_storage, $self'max_orders_count, $self'owner, $self'order_list, $self'pairs, $self'pair_id, $self'order_count)) = $self;
+    var $fresh$ret_4 = $Pair$_load_opt(__tact_dict_get_int_cell($self'pairs, 257, $id));
+    return (($self'min_ton_for_storage, $self'max_orders_count, $self'owner, $self'order_list, $self'pairs, $self'pair_id, $self'order_count), $fresh$ret_4);
+}
+
+((int, int, slice, cell, cell, int, int), slice) $Main$_fun_balance((int, int, slice, cell, cell, int, int) $self) impure inline_ref {
+    var (($self'min_ton_for_storage, $self'max_orders_count, $self'owner, $self'order_list, $self'pairs, $self'pair_id, $self'order_count)) = $self;
+    var $fresh$ret_6 = $Int$_fun_toCoinsString($global_myBalance());
+    return (($self'min_ton_for_storage, $self'max_orders_count, $self'owner, $self'order_list, $self'pairs, $self'pair_id, $self'order_count), $fresh$ret_6);
+}
+
+;;
+;; Get methods of a Contract Main
+;;
+
+_ %list(int $base_token, int $quote_token, int $is_buy) method_id(94211) {
+    int $base_token = $base_token;
+    int $quote_token = $quote_token;
+    int $is_buy = $is_buy;
+    var self = $Main$_contract_load();
+    var res = self~$Main$_fun_list($base_token, $quote_token, $is_buy);
+    return res;
+}
+
+_ %pair(int $id) method_id(65865) {
+    int $id = $id;
+    var self = $Main$_contract_load();
+    var res = self~$Main$_fun_pair($id);
+    return $Pair$_to_opt_external(res);
+}
+
+_ %order(int $id) method_id(81561) {
+    int $id = $id;
+    var self = $Main$_contract_load();
+    var res = self~$Main$_fun_order($id);
+    return $Order$_to_opt_external(res);
+}
+
+_ %balance() method_id(104128) {
+    var self = $Main$_contract_load();
+    var res = self~$Main$_fun_balance();
+    return res;
+}
+
+_ %owner() method_id(83229) {
+    var self = $Main$_contract_load();
+    var res = self~$Main$_fun_owner();
+    return res;
+}
+
+;;
+;; Routing of a Contract Main
+;;
+
+;; message opcode reader utility: only binary receivers
+;; Returns 32 bit message opcode, otherwise throws the "Invalid incoming message" exit code
+(slice, int) ~load_opcode_internal(slice s) asm( -> 1 0) "32 LDUQ 130 THROWIFNOT";
+
+() recv_internal(int msg_value, cell in_msg_cell, slice in_msg) impure {
+    
+    ;; Context
+    var cs = in_msg_cell.begin_parse();
+    cs~skip_bits(2);
+    var msg_bounceable = cs~load_int(1);
+    var msg_bounced = cs~load_int(1);
+    slice msg_sender_addr = cs~load_msg_addr();
+    __tact_context = (msg_bounceable, msg_sender_addr, msg_value, cs);
+    __tact_context_sender = msg_sender_addr;
+    
+    ;; Load contract data
+    var ($self'min_ton_for_storage, $self'max_orders_count, $self'owner, $self'order_list, $self'pairs, $self'pair_id, $self'order_count) = $Main$_contract_load();
+    
+    ;; Handle bounced messages
+    if (msg_bounced) { return (); }
+    int op = 0;
+    int in_msg_length = slice_bits(in_msg);
+    if (in_msg_length >= 32) {
+        op = in_msg~load_uint(32);
+    }
+    ;; Receive Withdraw message
+    if (op == 2496427056) {
+        var ($msg'amount) = in_msg~$Withdraw$_load_without_opcode();
+        throw_unless(27921, ( equal_slices_bits($self'owner, __tact_context_get_sender()) ));
+        int $amount = $global_min($msg'amount, (($global_myBalance() - $Context$_get_value(__tact_context_get())) - $self'min_ton_for_storage));
+        throw_unless(54615, ($amount > 0));
+        $global_send($SendParameters$_constructor_to_bounce_value_mode($self'owner, true, $amount, 66));
+        $Main$_contract_store(($self'min_ton_for_storage, $self'max_orders_count, $self'owner, $self'order_list, $self'pairs, $self'pair_id, $self'order_count));
+        return ();
+    }
+    
+    ;; Receive CreateOrder message
+    if (op == 2954005795) {
+        var (($msg'order'id, $msg'order'timestamp, $msg'order'user_id, $msg'order'amount, $msg'order'price, $msg'order'is_buy, $msg'order'is_paired, $msg'order'base_token, $msg'order'quote_token)) = in_msg~$CreateOrder$_load_without_opcode();
+        throw_unless(18022, ($self'order_count < $self'max_orders_count));
+        ($self'min_ton_for_storage, $self'max_orders_count, $self'owner, $self'order_list, $self'pairs, $self'pair_id, $self'order_count)~$Main$_fun_orderList($Order$_tensor_cast(($msg'order'id, $msg'order'timestamp, $msg'order'user_id, $msg'order'amount, $msg'order'price, $msg'order'is_buy, $msg'order'is_paired, $msg'order'base_token, $msg'order'quote_token)));
+        $self'order_count = $self'order_count += 1;
+        ($self'min_ton_for_storage, $self'max_orders_count, $self'owner, $self'order_list, $self'pairs, $self'pair_id, $self'order_count)~$Main$_fun_matchOrders($Order$_tensor_cast(($msg'order'id, $msg'order'timestamp, $msg'order'user_id, $msg'order'amount, $msg'order'price, $msg'order'is_buy, $msg'order'is_paired, $msg'order'base_token, $msg'order'quote_token)));
+        ($self'min_ton_for_storage, $self'max_orders_count, $self'owner, $self'order_list, $self'pairs, $self'pair_id, $self'order_count)~$Main$_fun_reply(__gen_cell_cell_8a837c6a9a6495410958389a40bfd6106f1884858f7c50a9b07bb454c159627c());
+        $Main$_contract_store(($self'min_ton_for_storage, $self'max_orders_count, $self'owner, $self'order_list, $self'pairs, $self'pair_id, $self'order_count));
+        return ();
+    }
+    
+    ;; Receive RemoveOrder message
+    if (op == 2820521053) {
+        var ($msg'order_id) = in_msg~$RemoveOrder$_load_without_opcode();
+        throw_unless(18518, (~ null?($Order$_load_opt(__tact_dict_get_int_cell($self'order_list, 257, $msg'order_id)))));
+        var ($order'id, $order'timestamp, $order'user_id, $order'amount, $order'price, $order'is_buy, $order'is_paired, $order'base_token, $order'quote_token) = $Order$_not_null($Order$_load_opt(__tact_dict_get_int_cell($self'order_list, 257, $msg'order_id)));
+        throw_unless(11596, ( (( equal_slices_bits($self'owner, __tact_context_get_sender()) )) ? (true) : (( equal_slices_bits($order'user_id, __tact_context_get_sender()) )) ));
+        $self'order_list~__tact_dict_set_int_cell(257, $msg'order_id, $Order$_store_opt(null()));
+        $self'order_count = $self'order_count -= 1;
+        ($self'min_ton_for_storage, $self'max_orders_count, $self'owner, $self'order_list, $self'pairs, $self'pair_id, $self'order_count)~$Main$_fun_reply(__gen_cell_cell_8a837c6a9a6495410958389a40bfd6106f1884858f7c50a9b07bb454c159627c());
+        $Main$_contract_store(($self'min_ton_for_storage, $self'max_orders_count, $self'owner, $self'order_list, $self'pairs, $self'pair_id, $self'order_count));
+        return ();
+    }
+    
+    ;; Receive ChangeOrderCount message
+    if (op == 753540692) {
+        var ($msg'new_max_count) = in_msg~$ChangeOrderCount$_load_without_opcode();
+        throw_unless(27921, ( equal_slices_bits($self'owner, __tact_context_get_sender()) ));
+        $self'max_orders_count = $msg'new_max_count;
+        ($self'min_ton_for_storage, $self'max_orders_count, $self'owner, $self'order_list, $self'pairs, $self'pair_id, $self'order_count)~$Main$_fun_reply(__gen_cell_cell_8a837c6a9a6495410958389a40bfd6106f1884858f7c50a9b07bb454c159627c());
+        $Main$_contract_store(($self'min_ton_for_storage, $self'max_orders_count, $self'owner, $self'order_list, $self'pairs, $self'pair_id, $self'order_count));
+        return ();
+    }
+    
+    ;; Receive CompletePair message
+    if (op == 1330076981) {
+        var ($msg'pair_id) = in_msg~$CompletePair$_load_without_opcode();
+        throw_unless(31808, ( equal_slices_bits($self'owner, __tact_context_get_sender()) ));
+        throw_unless(19381, (~ null?($Pair$_load_opt(__tact_dict_get_int_cell($self'pairs, 257, $msg'pair_id)))));
+        var ($pair'pair_id, $pair'buy_order_id, $pair'sell_order_id, $pair'completed) = $Pair$_not_null($Pair$_load_opt(__tact_dict_get_int_cell($self'pairs, 257, $msg'pair_id)));
+        $pair'completed = true;
+        $self'pairs~__tact_dict_set_int_cell(257, $msg'pair_id, $Pair$_store_cell(($pair'pair_id, $pair'buy_order_id, $pair'sell_order_id, $pair'completed)));
+        $self'order_list~__tact_dict_set_int_cell(257, $pair'sell_order_id, $Order$_store_opt(null()));
+        $self'order_list~__tact_dict_set_int_cell(257, $pair'buy_order_id, $Order$_store_opt(null()));
+        ($self'min_ton_for_storage, $self'max_orders_count, $self'owner, $self'order_list, $self'pairs, $self'pair_id, $self'order_count)~$Main$_fun_reply(__gen_cell_cell_8a837c6a9a6495410958389a40bfd6106f1884858f7c50a9b07bb454c159627c());
+        $Main$_contract_store(($self'min_ton_for_storage, $self'max_orders_count, $self'owner, $self'order_list, $self'pairs, $self'pair_id, $self'order_count));
+        return ();
+    }
+    
+    ;; Receive Deploy message
+    if (op == 0x946a98b6) {
+        var ($deploy'queryId) = in_msg~$Deploy$_load_without_opcode();
+        ($self'min_ton_for_storage, $self'max_orders_count, $self'owner, $self'order_list, $self'pairs, $self'pair_id, $self'order_count)~$Main$_fun_notify($DeployOk$_store_cell($DeployOk$_constructor_queryId($deploy'queryId)));
+        $Main$_contract_store(($self'min_ton_for_storage, $self'max_orders_count, $self'owner, $self'order_list, $self'pairs, $self'pair_id, $self'order_count));
+        return ();
+    }
+    
+    ;; Receive empty message
+    if ((op == 0) & (in_msg_length <= 32)) {
+        $Main$_contract_store(($self'min_ton_for_storage, $self'max_orders_count, $self'owner, $self'order_list, $self'pairs, $self'pair_id, $self'order_count));
+        return ();
+    }
+    ;; Throw if not handled
+    throw(130);
+}
+
+
+() __tact_selector_hack_asm() impure asm """
+@atend @ 1 {
+        execute current@ context@ current!
+        {
+            // The core idea of this function is to save gas by avoiding unnecessary dict jump, when recv_internal/recv_external is called
+            // We want to extract recv_internal/recv_external from the dict and select needed function
+            // not by jumping to the needed function by it's index, but by using usual IF statements.
+            
+            }END> b> // Close previous builder, now we have a cell of previous code on top of the stack
+            
+            <{ // Start of the new code builder
+                SETCP0
+                // Swap the new code builder with the previous code, now we have previous code on top of the stack
+                swap
+                // Transform cell to slice and load first ref from the previous code, now we have the dict on top of the stack
+                <s ref@
+
+                // Extract the recv_internal from the dict
+                dup 0 swap @procdictkeylen idict@ { "internal shortcut error" abort } ifnot 
+                swap
+                
+                // Delete the recv_internal from the dict
+                0 swap @procdictkeylen idict- drop 
+                // Delete the recv_external from the dict (it's okay if it's not there)
+                -1 swap @procdictkeylen idict- drop 
+                // Delete the __tact_selector_hack from the dict
+                65535 swap @procdictkeylen idict- drop 
+
+                // Bring the code builder from the bottom of the stack
+                // because if recv_external extraction is optional, and the number of elements on the stack is not fixed
+                depth 1- roll
+                // Swap with the dict from which we extracted recv_internal and (maybe) recv_external
+                swap
+                
+                // Check if the dict is empty
+                dup null?
+                // Store a copy of this flag in the bottom of the stack
+                dup depth 1- -roll 
+                {
+                    // If the dict is empty, just drop it (it will be null if it's empty)
+                    drop 
+                } 
+                {
+                    // If the dict is not empty, prepare continuation to be stored in c3
+                    <{
+                        // Save this dict as first ref in this continuation, it will be pushed in runtime by DICTPUSHCONST
+                        swap @procdictkeylen DICTPUSHCONST
+                        // Jump to the needed function by it's index
+                        DICTIGETJMPZ
+                        // If such key is not found, throw 11 along with the key as an argument
+                        11 THROWARG
+                    }> PUSHCONT
+                    // Store the continuation in c3
+                    c3 POP
+                } cond
+                
+                // Function id is on top of the (runtime) stack
+                DUP IFNOTJMP:<{
+                    // place recv_internal here
+                    DROP swap @addop
+                }>
+
+                // Bring back the flag, indicating if the dict is empty or not from the bottom of the stack
+                depth 1- roll 
+                { 
+                    // If the dict is empty, throw 11
+                    11 THROWARG 
+                } 
+                { 
+                    // If the dict is not empty, jump to continuation from c3
+                    c3 PUSH JMPX 
+                } cond 
+            }> b>
+        } : }END>c
+        current@ context! current!
+    } does @atend !
+""";
+
+() __tact_selector_hack() method_id(65535) {
+    return __tact_selector_hack_asm();
+}
